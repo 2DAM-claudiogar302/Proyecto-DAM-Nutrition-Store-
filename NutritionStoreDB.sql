@@ -1,0 +1,30 @@
+CREATE TABLE Usuarios (
+    ID INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+    Nombre VARCHAR(15),
+    Apellido1 VARCHAR(10),
+    Apellido2 VARCHAR(10),
+    Usuername VARCHAR(10),
+    Email VARCHAR(100) UNIQUE,
+    Contraseña VARCHAR(20),
+    ADMINISTRADOR BOOLEAN NOT NULL,
+    FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Suplementos (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(20),
+    Descripción VARCHAR(100),
+    Categoria VARCHAR(20),
+    Precio DECIMAL(10, 2),
+    FechaAñadido TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Ejercicios (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(20),
+    GrupoMuscular VARCHAR(20),
+    Descripción VARCHAR(100),
+    FechaAñadido TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
