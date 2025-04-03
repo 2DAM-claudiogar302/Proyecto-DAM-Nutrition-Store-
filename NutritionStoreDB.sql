@@ -1,3 +1,5 @@
+DROP DATABASE nutritionstore;
+CREATE DATABASE nutritionstore;
 CREATE TABLE Usuarios (
     ID INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
     Nombre VARCHAR(15),
@@ -10,21 +12,33 @@ CREATE TABLE Usuarios (
     FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE Categorias (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(50),
+    Descripción VARCHAR(100)
+);
+
 CREATE TABLE Suplementos (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Nombre VARCHAR(20),
     Descripción VARCHAR(100),
-    Categoria VARCHAR(20),
+    CategoriaID INT,
     Precio DECIMAL(10, 2),
-    FechaAñadido TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    FechaAñadido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (CategoriaID) REFERENCES Categorias(ID)
+);
+
+CREATE TABLE GruposMusculares (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(50),
+    Descripción VARCHAR(100)
 );
 
 CREATE TABLE Ejercicios (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Nombre VARCHAR(20),
-    GrupoMuscular VARCHAR(20),
+    GrupoMuscularID INT,
     Descripción VARCHAR(100),
-    FechaAñadido TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    FechaAñadido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (GrupoMuscularID) REFERENCES GruposMusculares(ID)
 );
-
-
