@@ -1,32 +1,56 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStoreSOL\\",
+  "WorkspaceRootPath": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8F41D3D4-459B-4985-A8BA-C7A5CD795121}|NutritionStore\\NutritionStore.csproj|c:\\users\\claud\\onedrive\\documentos\\reps_claudio\\proyecto-dam-nutrition-store-\\nutritionstoresol\\nutritionstore\\conexion.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{8F41D3D4-459B-4985-A8BA-C7A5CD795121}|NutritionStore\\NutritionStore.csproj|solutionrelative:nutritionstore\\conexion.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\nutritionstorepruebaef\\views\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|solutionrelative:nutritionstorepruebaef\\views\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F41D3D4-459B-4985-A8BA-C7A5CD795121}|NutritionStore\\NutritionStore.csproj|c:\\users\\claud\\onedrive\\documentos\\reps_claudio\\proyecto-dam-nutrition-store-\\nutritionstoresol\\nutritionstore\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8F41D3D4-459B-4985-A8BA-C7A5CD795121}|NutritionStore\\NutritionStore.csproj|solutionrelative:nutritionstore\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\nutritionstorepruebaef\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|solutionrelative:nutritionstorepruebaef\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F41D3D4-459B-4985-A8BA-C7A5CD795121}|NutritionStore\\NutritionStore.csproj|c:\\users\\claud\\onedrive\\documentos\\reps_claudio\\proyecto-dam-nutrition-store-\\nutritionstoresol\\nutritionstore\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8F41D3D4-459B-4985-A8BA-C7A5CD795121}|NutritionStore\\NutritionStore.csproj|solutionrelative:nutritionstore\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|c:\\users\\claud\\onedrive\\documentos\\reps_claudio\\proyecto-dam-nutrition-store-\\nutritionstorepruebaefsol\\nutritionstorepruebaef\\views\\index.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|solutionrelative:nutritionstorepruebaef\\views\\index.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F41D3D4-459B-4985-A8BA-C7A5CD795121}|NutritionStore\\NutritionStore.csproj|c:\\users\\claud\\onedrive\\documentos\\reps_claudio\\proyecto-dam-nutrition-store-\\nutritionstoresol\\nutritionstore\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F41D3D4-459B-4985-A8BA-C7A5CD795121}|NutritionStore\\NutritionStore.csproj|solutionrelative:nutritionstore\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\nutritionstorepruebaef\\views\\inicio.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|solutionrelative:nutritionstorepruebaef\\views\\inicio.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\nutritionstorepruebaef\\usercontrols\\header.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|solutionrelative:nutritionstorepruebaef\\usercontrols\\header.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|c:\\users\\claud\\onedrive\\documentos\\reps_claudio\\proyecto-dam-nutrition-store-\\nutritionstorepruebaefsol\\nutritionstorepruebaef\\views\\indexadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|solutionrelative:nutritionstorepruebaef\\views\\indexadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|c:\\users\\claud\\onedrive\\documentos\\reps_claudio\\proyecto-dam-nutrition-store-\\nutritionstorepruebaefsol\\nutritionstorepruebaef\\views\\indexadmin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|solutionrelative:nutritionstorepruebaef\\views\\indexadmin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|c:\\users\\claud\\onedrive\\documentos\\reps_claudio\\proyecto-dam-nutrition-store-\\nutritionstorepruebaefsol\\nutritionstorepruebaef\\resources\\styleresources.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|solutionrelative:nutritionstorepruebaef\\resources\\styleresources.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\nutritionstorepruebaef\\views\\inicio.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|solutionrelative:nutritionstorepruebaef\\views\\inicio.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\nutritionstorepruebaef\\usercontrols\\header.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72BA96DD-3C2F-488D-AE47-9F06EA8C2BD5}|NutritionStorePruebaEF\\NutritionStorePruebaEF.csproj|solutionrelative:nutritionstorepruebaef\\usercontrols\\header.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "DockedHeight": 200,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,51 +62,127 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Conexion.config",
-              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStoreSOL\\NutritionStore\\Conexion.config",
-              "RelativeDocumentMoniker": "NutritionStore\\Conexion.config",
-              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStoreSOL\\NutritionStore\\Conexion.config",
-              "RelativeToolTip": "NutritionStore\\Conexion.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-03-29T20:48:58.654Z",
+              "DocumentIndex": 6,
+              "Title": "Views\\IndexAdmin.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\IndexAdmin.xaml.cs",
+              "RelativeDocumentMoniker": "NutritionStorePruebaEF\\Views\\IndexAdmin.xaml.cs",
+              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\IndexAdmin.xaml.cs",
+              "RelativeToolTip": "NutritionStorePruebaEF\\Views\\IndexAdmin.xaml.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAcwCwAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T12:09:31.146Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStoreSOL\\NutritionStore\\App.xaml",
-              "RelativeDocumentMoniker": "NutritionStore\\App.xaml",
-              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStoreSOL\\NutritionStore\\App.xaml",
-              "RelativeToolTip": "NutritionStore\\App.xaml",
+              "DocumentIndex": 5,
+              "Title": "IndexAdmin.xaml",
+              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\IndexAdmin.xaml",
+              "RelativeDocumentMoniker": "NutritionStorePruebaEF\\Views\\IndexAdmin.xaml",
+              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\IndexAdmin.xaml",
+              "RelativeToolTip": "NutritionStorePruebaEF\\Views\\IndexAdmin.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-29T20:42:08.36Z",
+              "WhenOpened": "2025-04-25T11:56:33.967Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStoreSOL\\NutritionStore\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "NutritionStore\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStoreSOL\\NutritionStore\\MainWindow.xaml",
-              "RelativeToolTip": "NutritionStore\\MainWindow.xaml",
+              "Title": "Index.xaml",
+              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\Index.xaml",
+              "RelativeDocumentMoniker": "NutritionStorePruebaEF\\Views\\Index.xaml",
+              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\Index.xaml",
+              "RelativeToolTip": "NutritionStorePruebaEF\\Views\\Index.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-29T20:41:27.04Z"
+              "WhenOpened": "2025-04-25T11:55:28.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Login.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\Login.xaml.cs",
+              "RelativeDocumentMoniker": "NutritionStorePruebaEF\\Views\\Login.xaml.cs",
+              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\Login.xaml.cs",
+              "RelativeToolTip": "NutritionStorePruebaEF\\Views\\Login.xaml.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAIwDMAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T13:08:41.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "StyleResources.xaml",
+              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Resources\\StyleResources.xaml",
+              "RelativeDocumentMoniker": "NutritionStorePruebaEF\\Resources\\StyleResources.xaml",
+              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Resources\\StyleResources.xaml",
+              "RelativeToolTip": "NutritionStorePruebaEF\\Resources\\StyleResources.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-23T12:38:42.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.xaml",
+              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\Login.xaml",
+              "RelativeDocumentMoniker": "NutritionStorePruebaEF\\Views\\Login.xaml",
+              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\Login.xaml",
+              "RelativeToolTip": "NutritionStorePruebaEF\\Views\\Login.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-22T20:20:32.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Header.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\UserControls\\Header.xaml.cs",
+              "RelativeDocumentMoniker": "NutritionStorePruebaEF\\UserControls\\Header.xaml.cs",
+              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\UserControls\\Header.xaml.cs",
+              "RelativeToolTip": "NutritionStorePruebaEF\\UserControls\\Header.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T19:44:35.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Inicio.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\Inicio.xaml.cs",
+              "RelativeDocumentMoniker": "NutritionStorePruebaEF\\Views\\Inicio.xaml.cs",
+              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\Inicio.xaml.cs",
+              "RelativeToolTip": "NutritionStorePruebaEF\\Views\\Inicio.xaml.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T19:22:27.159Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStoreSOL\\NutritionStore\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "NutritionStore\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStoreSOL\\NutritionStore\\MainWindow.xaml.cs",
-              "RelativeToolTip": "NutritionStore\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T20:41:20.799Z"
+              "Title": "Inicio.xaml",
+              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\Inicio.xaml",
+              "RelativeDocumentMoniker": "NutritionStorePruebaEF\\Views\\Inicio.xaml",
+              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\Views\\Inicio.xaml",
+              "RelativeToolTip": "NutritionStorePruebaEF\\Views\\Inicio.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-22T19:21:42.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Header.xaml",
+              "DocumentMoniker": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\UserControls\\Header.xaml",
+              "RelativeDocumentMoniker": "NutritionStorePruebaEF\\UserControls\\Header.xaml",
+              "ToolTip": "C:\\Users\\claud\\OneDrive\\Documentos\\REPS_CLAUDIO\\Proyecto-DAM-Nutrition-Store-\\NutritionStorePruebaEFSOL\\NutritionStorePruebaEF\\UserControls\\Header.xaml",
+              "RelativeToolTip": "NutritionStorePruebaEF\\UserControls\\Header.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-22T19:06:31.038Z",
+              "EditorCaption": ""
             }
           ]
         }
