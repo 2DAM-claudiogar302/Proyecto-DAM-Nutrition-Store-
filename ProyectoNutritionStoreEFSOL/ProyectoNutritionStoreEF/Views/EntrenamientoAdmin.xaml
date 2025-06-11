@@ -1,0 +1,98 @@
+﻿<Window x:Class="ProyectoNutritionStoreEF.Views.EntrenamientoAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoNutritionStoreEF.Views"
+        xmlns:control="clr-namespace:ProyectoNutritionStoreEF.UserControls"
+        mc:Ignorable="d"
+        Icon="/Resources/Logo_NutritionStore.png"
+        Title="Entrenamiento" Height="570" Width="458">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <control:HeaderAdmin></control:HeaderAdmin>
+            </Grid>
+            <Grid Grid.Row="1">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,6,0,7">
+                    <TextBlock Text="Gestión de ejercicios." HorizontalAlignment="Center" Margin="0,15,0,0" FontWeight="Bold"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Button Content="Inicio" 
+FontSize="10" 
+Margin="20,0" 
+Background="Transparent" 
+BorderBrush="Transparent" Style="{StaticResource MenuButtonStyle}"/>
+
+                    <Button Content="Espalda" 
+FontSize="10" 
+Margin="20,0" 
+Background="Transparent" 
+BorderBrush="Transparent" Style="{StaticResource MenuButtonStyle}"/>
+
+                    <Button Content="Pecho" 
+FontSize="10" 
+Margin="20,0" 
+Background="Transparent" 
+BorderBrush="Transparent" Style="{StaticResource MenuButtonStyle}"/>
+
+                    <Button Content="Brazo" 
+FontSize="10" 
+Margin="20,0" 
+Background="Transparent" 
+BorderBrush="Transparent" Style="{StaticResource MenuButtonStyle}"/>
+
+                    <Button Content="Pierna" 
+   FontSize="10" 
+   Margin="20,0" 
+   Background="Transparent" 
+   BorderBrush="Transparent" Style="{StaticResource MenuButtonStyle}"/>
+
+                    <Button Content="Map" 
+FontSize="10" 
+Margin="20,0" 
+Background="Transparent" 
+BorderBrush="Transparent" Style="{StaticResource MenuButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                    <ItemsControl ItemsSource="{Binding EjerciciosTendencia}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="200" Height="300" Margin="10" Background="LightGray" CornerRadius="10">
+                                    <StackPanel>
+                                        <Image Source="{Binding Foto}" Width="150" Height="150" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextAlignment="Center" Margin="0,10,0,0"/>
+                                        <TextBlock Text="{Binding Descripcion}" TextWrapping="Wrap" TextAlignment="Center" Margin="5"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </ScrollViewer>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Button Content="Gestionar" Style="{StaticResource bordesBoton}" Background="{StaticResource colorPrimario2}" Margin="0,0,10,0" FontWeight="Bold"  Width="90" FontSize="16" Height="40" Command="{Binding VistaGestionEntrenamiento}"></Button>
+            </Grid>
+
+
+        </Grid>
+
+
+    </Grid>
+</Window>
