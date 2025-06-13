@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Grid.Background>
-            <ImageBrush ImageSource="/Resources/FondoLogin.jpg"/>
+            <ImageBrush ImageSource="/Resources/login.png"/>
         </Grid.Background>
 
         <Grid Grid.Row="0">
@@ -47,8 +47,8 @@
                         <Button Margin="0,12,0,0"
 Height="34" FontSize="15"
 Content="Iniciar sesión"
-Width="130"
-Style="{StaticResource bordesBoton2}"
+Width="140"
+Style="{StaticResource BotonConIconoLogin}"
 Command="{Binding LoginCommand}"
 Foreground="Black"
         FontWeight="Bold"

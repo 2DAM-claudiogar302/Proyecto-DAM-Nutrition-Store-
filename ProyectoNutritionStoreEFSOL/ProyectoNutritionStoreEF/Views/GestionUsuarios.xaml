@@ -7,7 +7,7 @@
         xmlns:control="clr-namespace:ProyectoNutritionStoreEF.UserControls"
         mc:Ignorable="d"
         Icon="/Resources/Logo_NutritionStore.png"
-        Title="GestionUsuarios" Height="500" Width="900">
+        Title="GestionUsuarios" Height="600" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"></RowDefinition>
@@ -31,14 +31,17 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="*"/>
+                    <!-- 0 -->
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
@@ -88,31 +91,47 @@ Command="{Binding LoadImagenCommand}"/>
                 <Grid Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center">
                     <PasswordBox x:Name="password" FontSize="13" Width="247" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" PasswordChanged="contraseña"></PasswordBox>
                 </Grid>
-
                 <Grid Grid.Row="7" Grid.Column="0">
+                    <Label Content="Pregunta de seguridad:" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center">
+                    <ComboBox Width="247" Height="25"
+                  ItemsSource="{Binding PreguntasSeguridad}"
+                  SelectedItem="{Binding PreguntaSeguridad}"/>
+                </Grid>
+
+                <!-- Respuesta de seguridad -->
+                <Grid Grid.Row="8" Grid.Column="0">
+                    <Label Content="Respuesta:" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBox Width="247" Height="25" Text="{Binding RespuestaSeguridad}"/>
+                </Grid>
+
+                <Grid Grid.Row="9" Grid.Column="0">
                     <Button x:Name="agregar" Content="Añadir" 
-Style="{StaticResource bordesBoton}"
+Style="{StaticResource BotonConIconoPequeño}" Tag="/Resources/anadir.png"
 Width="110" Margin="10" Height="35" 
 FontSize="13" HorizontalAlignment="Left"
-                            Command="{Binding AgregarUsuarioCommand}"></Button>
+                            Command="{Binding AgregarUsuarioCommand2}"></Button>
                     <Button x:Name="edit" Content="Editar" 
-Style="{StaticResource bordesBoton}"
-Width="110" Margin="10" Height="35" 
+Style="{StaticResource BotonConIconoPequeño}" Tag="/Resources/editar.png"
+Width="110" Margin="0,0,20,0" Height="35" 
 FontSize="13" HorizontalAlignment="Right"
                             Command="{Binding EditarUsuarioCommand}"></Button>
                 </Grid>
-                <Grid Grid.Row="7" Grid.Column="1">
+                <Grid Grid.Row="9" Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="172*"/>
                         <ColumnDefinition Width="95*"/>
                     </Grid.ColumnDefinitions>
                     <Button x:Name="eliminar" Content="Eliminar" 
-Style="{StaticResource bordesBoton}"
-Width="110" Margin="10" Height="35" 
+Style="{StaticResource BotonConIconoPequeño}" Tag="/Resources/papelera.png"
+Width="110" Margin="20,0,0,0" Height="35" 
 FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding EliminarUsuarioCommand}"></Button>
 
                     <Button x:Name="cancelar" Content="Cancelar" 
-Style="{StaticResource bordesBoton}"
+Style="{StaticResource BotonConIconoPequeño}" Tag="/Resources/cancelar.png"
 Width="110" Margin="10" Height="35" 
 FontSize="13" HorizontalAlignment="Right" Command="{Binding CancelCommand}" Grid.ColumnSpan="2"></Button>
                 </Grid>
@@ -144,29 +163,31 @@ Orientation="Vertical">
                         </Button>
 
                     </StackPanel>
-                    <DataGrid x:Name="listaSuplementos" AutoGenerateColumns="False" Margin="10,0,10,10"
-    HorizontalAlignment="Stretch"
-    VerticalAlignment="Stretch"
-    ColumnWidth="*"
-                              ItemsSource="{Binding Usuarios}"
-SelectedItem="{Binding UsuarioSeleccionado}">
-
+                    <DataGrid x:Name="listaUsuarios"
+          AutoGenerateColumns="False"
+          Margin="10,0,10,10"
+          Height="110" 
+          ColumnWidth="*" 
+          ItemsSource="{Binding Usuarios}"
+          SelectedItem="{Binding UsuarioSeleccionado}"
+          ScrollViewer.VerticalScrollBarVisibility="Auto">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"/>
                         </DataGrid.Columns>
                     </DataGrid>
+
                     <StackPanel Orientation="Horizontal" Margin="20">
-                        <Button x:Name="obtenerDatos" Content="Descargar datos"
-    Style="{StaticResource bordesBoton}" 
-    Width="110" Margin="10" Height="35" 
+                        <Button x:Name="obtenerDatos" Content="Información"
+    Style="{StaticResource BotonConIconoPequeño}" Tag="/Resources/informacion.png"
+    Width="120" Margin="10" Height="35" 
     FontSize="13"
     Command="{Binding obtenerDatosUser}"></Button>
-                        <Button Content="Favoritos"
+                        <Button Content="Favoritos" 
 Margin="6,0,0,0"
 Width="100"
 Height="35"
-Style="{StaticResource bordesBoton}"
+Style="{StaticResource BotonConIconoPequeño}" Tag="/Resources/favorito.png"
 Command="{Binding FavoritosCommand}"/>
                     </StackPanel>
 

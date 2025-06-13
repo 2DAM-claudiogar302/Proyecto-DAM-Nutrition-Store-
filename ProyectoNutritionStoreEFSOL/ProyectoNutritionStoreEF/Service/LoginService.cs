@@ -56,6 +56,12 @@ namespace ProyectoNutritionStoreEF.Service
             return usuarioSesion;
         }
 
+        public Usuario ObtenerUsuarioPorUsername(string username)
+        {
+            return _context.Usuarios.SingleOrDefault(u => u.Username == username);
+        }
+
+
         // Restablecer contraseña
         public bool CambiarContrasena(string username, string nuevaContrasena)
         {

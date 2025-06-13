@@ -14,10 +14,13 @@ namespace ProyectoNutritionStoreEF.Models
         public string Contraseña { get; set; }
         public bool Administrador { get; set; }
         public byte[]? Foto { get; set; }
+        public string PreguntaSeguridad { get; set; }
+        public string RespuestaSeguridad { get; set; }
+
         public DateTime FechaRegistro { get; set; }
 
         public Usuario() { }
-        public Usuario(string nombre, string apellido1, string apellido2, string username, string email, string contraseña, bool administrador, byte[] foto, DateTime fechaRegistro)
+        public Usuario(string nombre, string apellido1, string apellido2, string username, string email, string contraseña, bool administrador, byte[] foto, string pregunta, string respuesta, DateTime fechaRegistro)
         {
             Nombre = nombre;
             Apellido1 = apellido1;
@@ -27,6 +30,8 @@ namespace ProyectoNutritionStoreEF.Models
             Contraseña = contraseña;
             Administrador = administrador;
             this.Foto = foto;
+            PreguntaSeguridad = pregunta;
+            RespuestaSeguridad = respuesta;
             FechaRegistro = fechaRegistro;
         }
     }

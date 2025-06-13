@@ -18,7 +18,7 @@
             <control:HeaderAdmin></control:HeaderAdmin>
         </Grid>
         <Grid Grid.Row="1">
-            <TextBlock Text="Gestión de ejercicios" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="Gestión de ejercicios" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -68,9 +68,11 @@ Command="{Binding LoadImagenCommand}"/>
                     <Label Content="Tendencia:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
 
                 </Grid>
-                <Grid Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30">
-                    <CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Tendencia, Mode=TwoWay}"></CheckBox>
-                </Grid>
+                <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0">
+                    <TextBlock Text="¿Desea añadirlo a tendencia?" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <CheckBox IsChecked="{Binding Tendencia, Mode=TwoWay}" VerticalAlignment="Center"/>
+                </StackPanel>
+
                 <Grid Grid.Row="4" Grid.Column="0">
                     <Label Content="Grupo muscular:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
                 </Grid>
@@ -81,24 +83,24 @@ Command="{Binding LoadImagenCommand}"/>
 
                 <Grid Grid.Row="6" Grid.Column="0">
                     <Button x:Name="agregar" Content="Añadir" 
-Style="{StaticResource bordesBoton}"
+Style="{StaticResource BotonConIconoPequeño}" Tag="/Resources/anadir.png"
 Width="110" Margin="10" Height="35" 
 FontSize="13" HorizontalAlignment="Left"
                             Command="{Binding AddEjercicio}"></Button>
                     <Button x:Name="edit" Content="Editar" 
-Style="{StaticResource bordesBoton}"
-Width="110" Margin="10" Height="35" 
+Style="{StaticResource BotonConIconoPequeño}" Tag="/Resources/editar.png"
+Width="110" Margin="0,0,20,0" Height="35" 
 FontSize="13" HorizontalAlignment="Right"
                             Command="{Binding UpdateEjercicio}"></Button>
                 </Grid>
                 <Grid Grid.Row="6" Grid.Column="1">
                     <Button x:Name="eliminar" Content="Eliminar" 
-Style="{StaticResource bordesBoton}"
-Width="110" Margin="10" Height="35" 
+Style="{StaticResource BotonConIconoPequeño}" Tag="/Resources/papelera.png"
+Width="110" Margin="20,0,0,0" Height="35" 
 FontSize="13" HorizontalAlignment="Left" Command="{Binding DeleteEjercicio}"></Button>
 
                     <Button x:Name="cancelar" Content="Cancelar" 
-Style="{StaticResource bordesBoton}"
+Style="{StaticResource BotonConIconoPequeño}" Tag="/Resources/cancelar.png"
 Width="110" Margin="10" Height="35" 
 FontSize="13" HorizontalAlignment="Right" Command="{Binding CancelCommand}"></Button>
                 </Grid>
@@ -130,12 +132,11 @@ Orientation="Vertical">
                         </Button>
 
                     </StackPanel>
-                    <DataGrid x:Name="listaSuplementos" AutoGenerateColumns="False" Margin="10,0,10,10"
-    HorizontalAlignment="Stretch"
-    VerticalAlignment="Stretch"
-    ColumnWidth="*"
-                              ItemsSource="{Binding EjerciciosTotales}"
-SelectedItem="{Binding EjercicioSeleccionado}">
+                    <DataGrid x:Name="listaSuplementos" AutoGenerateColumns="False"
+Margin="10,0,10,10"
+Height="150" 
+ColumnWidth="*" ItemsSource="{Binding EjerciciosTotales}"
+SelectedItem="{Binding EjercicioSeleccionado}" ScrollViewer.VerticalScrollBarVisibility="Auto">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding ID}"></DataGridTextColumn>

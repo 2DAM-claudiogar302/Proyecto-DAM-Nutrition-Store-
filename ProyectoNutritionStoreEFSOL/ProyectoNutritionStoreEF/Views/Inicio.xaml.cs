@@ -22,6 +22,7 @@ namespace ProyectoNutritionStoreEF
     /// </summary>
     public partial class Inicio : Window
     {
+
         public Inicio()
         {
             InitializeComponent();

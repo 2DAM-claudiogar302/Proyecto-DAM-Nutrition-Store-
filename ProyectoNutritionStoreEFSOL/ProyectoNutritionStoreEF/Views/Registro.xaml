@@ -7,17 +7,19 @@
         xmlns:control="clr-namespace:ProyectoNutritionStoreEF.UserControls" xmlns:viewmodels="clr-namespace:ProyectoNutritionStoreEF.ViewModels"
         mc:Ignorable="d"
         Icon="/Resources/Logo_NutritionStore.png"
-        Title="Registro" Height="450" Width="650">
+        Title="Registro" Height="650" Width="650">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <control:Header></control:Header>
+            <control:HeaderCopia></control:HeaderCopia>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -47,9 +49,30 @@
             <TextBlock Text="Foto:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
             <Button Name="Imagen" Content="Cargar imagen" Grid.Row="6" Grid.Column="1"  Height="22" Width="200" FontSize="13" Command="{Binding LoadImagenCommand}"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="7" Grid.Column="1" Margin="6">
-                <Button x:Name="registro" Content="Confirmar" Margin="0,0,16,0" Style="{StaticResource bordesBoton}" Width="90" Command="{Binding AgregarUsuarioCommand}"></Button>
-                <Button x:Name="cancelar" Content="Cancelar"  Margin="16,0,0,0" Style="{StaticResource bordesBoton}" Width="90" Command="{Binding CancelCommand}"></Button>
+            <TextBlock Text="Pregunta de seguridad:" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <ComboBox Grid.Row="7" Grid.Column="1" Width="400" Height="30" 
+          ItemsSource="{Binding PreguntasSeguridad}"
+          SelectedItem="{Binding PreguntaSeguridad}"/>
+
+            <TextBlock Text="Respuesta:" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <TextBox Grid.Row="8" Grid.Column="1" Width="400" Height="30" Text="{Binding RespuestaSeguridad}"/>
+
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="9" Grid.Column="1" Margin="6">
+                <Button Content="Confirmar"
+        Style="{StaticResource BotonConIconoPequeño}"
+        Tag="/Resources/confirmar.png"
+        Command="{Binding AgregarUsuarioCommand}" Margin="0,0,9,0"/>
+
+                <Button Content="Cancelar"
+        Style="{StaticResource BotonConIconoPequeño}"
+        Tag="/Resources/cancelar.png"
+        Command="{Binding CancelCommand}" Margin="12,0,0,0"/>
+                <Button Content="Volver"
+Style="{StaticResource BotonConIconoPequeño}"
+Tag="/Resources/volver.png"
+Command="{Binding VolverCommand}"
+Margin="18,0,0,0"/>
             </StackPanel>
         </Grid>
     </Grid>

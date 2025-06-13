@@ -10,18 +10,27 @@
         <Border Background="{StaticResource colorCabecera}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid>
                 <!-- Botón de barra -->
-                <Button 
-                    HorizontalAlignment="Left"
-                        VerticalAlignment="Center" 
-                        Width="40" Height="40"
-                        Margin="20,0,0,0"
-                        Style="{StaticResource bordesBoton}"
-                        Command="{Binding VistaEntrenamientoAdmin}"
-                        Background="#FEF2F2" 
-                        BorderBrush="Transparent">
-                    <Image Source="/Resources/GymIcon.png" 
-                           Width="30" Height="30"/>
-                </Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" >
+
+                    <!-- Botón de suplementos -->
+                    <Button Width="40" Height="40"
+        Style="{StaticResource bordesBoton2}"
+        Command="{Binding VistaSuplementosAdmin}"
+        Background="#FEF2F2" BorderBrush="Transparent"
+        Margin="0,0,10,0">
+                        <Image Source="/Resources/suplemento.png" Width="30" Height="30"/>
+                    </Button>
+
+                    <!-- Botón de barra -->
+                    <Button Width="40" Height="40" 
+        Style="{StaticResource bordesBoton2}"
+        Command="{Binding VistaEntrenamientoAdmin}"
+        Background="#FEF2F2" 
+        BorderBrush="Transparent">
+                        <Image Source="/Resources/GymIcon.png" Width="30" Height="30"/>
+                    </Button>
+
+                </StackPanel>
 
                 <!-- Logo principal -->
                 <Image Source="/Resources/Logo_NutritionStore.png" 
@@ -45,7 +54,7 @@
                         VerticalAlignment="Center" 
                         Width="40" Height="40" 
                         Margin="0,0,20,0" 
-                        Style="{StaticResource bordesBoton}"
+                        Style="{StaticResource bordesBoton2}"
                         Background="#FEF2F2" 
                         BorderBrush="Transparent" Click="cerrarSesion">
                     <Image Source="/Resources/LogOutIcon.png" 

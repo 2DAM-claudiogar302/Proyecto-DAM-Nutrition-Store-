@@ -24,8 +24,10 @@ namespace ProyectoNutritionStoreEF.Views
         public Registro()
         {
             InitializeComponent();
-            usuarioViewModel = new UsuarioViewModel(new Service.UsuarioService(new EntityFramework.NutritionStoreContext()));
+            usuarioViewModel = new UsuarioViewModel(this, new Service.UsuarioService(new EntityFramework.NutritionStoreContext()));
             this.DataContext = usuarioViewModel;
+            usuarioViewModel.SolicitarResetPassword += () => contraseña.Password = string.Empty;
+            usuarioViewModel.InicializarUsuarios();
         }
 
         private void contrasena(object sender, RoutedEventArgs e)

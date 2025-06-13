@@ -11,20 +11,49 @@ namespace ProyectoNutritionStoreEF.ViewModels
     public class LoginViewModel : INotifyPropertyChanged
     {
         private readonly LoginService loginService;
-        private readonly Window _windowLogin;
+        private readonly Window ventanaActual;
+        //Evento para vaciar el campo de contraseña en la vista
+        public event Action SolicitarResetPassword;
 
         #region Comandos
         public RelayCommand LoginCommand { get; }
         public RelayCommand ReestablecerContrasena { get; }
         public RelayCommand CancelCommand { get; }
+        public RelayCommand VolverCommand { get; }
         #endregion
 
         #region Propiedades
         private string _username;
         private string _password;
         private string _errorMessage;
-        private string _emailPass;
-        private string _fechaNacimiento;
+
+        public List<string> PreguntasSeguridad { get; } = new List<string>
+            {
+                "¿Ciudad de nacimiento?",
+                "¿Centro de estudios?"
+            };
+
+        private string _preguntaSeleccionada;
+        public string PreguntaSeleccionada
+        {
+            get => _preguntaSeleccionada;
+            set
+            {
+                _preguntaSeleccionada = value;
+                OnPropertyChanged(nameof(PreguntaSeleccionada));
+            }
+        }
+
+        private string _respuestaIngresada;
+        public string RespuestaIngresada
+        {
+            get => _respuestaIngresada;
+            set
+            {
+                _respuestaIngresada = value;
+                OnPropertyChanged(nameof(RespuestaIngresada));
+            }
+        }
 
         public string Username
         {
@@ -79,45 +108,79 @@ namespace ProyectoNutritionStoreEF.ViewModels
         #endregion
 
         #region Métodos
-        public LoginViewModel(Window ventanaLogin, NutritionStoreContext context)
+        public LoginViewModel(Window ventana, NutritionStoreContext context)
         {
-            _windowLogin = ventanaLogin;
+            ventanaActual = ventana;
             loginService = new LoginService(context);
 
             LoginCommand = new RelayCommand(_ => GoToLogin(), _ => CheckLogin());
             ReestablecerContrasena = new RelayCommand(_ => ReestablecerPass(), _ => true);
             CancelCommand = new RelayCommand(_ => LimpiarFormulario(), _ => true);
+            VolverCommand = new RelayCommand(_ => EjecutarVolver(), _ => true);
         }
 
         private void LimpiarFormulario()
         {
             Username = null;
+            PreguntaSeleccionada = null;
+            RespuestaIngresada = null;
             ConfirmarContrasena = null;
             NuevaContrasena = null;
+            SolicitarResetPassword?.Invoke();
+        }
+
+        private void EjecutarVolver()
+        {
+            new Views.Login().Show();
+            this.ventanaActual.Close();
+            
         }
 
         private void ReestablecerPass()
         {
-            if (!string.IsNullOrWhiteSpace(Username) && !string.IsNullOrWhiteSpace(NuevaContrasena) && !string.IsNullOrWhiteSpace(ConfirmarContrasena))
+            if (string.IsNullOrWhiteSpace(Username) ||
+                string.IsNullOrWhiteSpace(PreguntaSeleccionada) ||
+                string.IsNullOrWhiteSpace(RespuestaIngresada) ||
+                string.IsNullOrWhiteSpace(NuevaContrasena) ||
+                string.IsNullOrWhiteSpace(ConfirmarContrasena))
             {
-                if (NuevaContrasena == ConfirmarContrasena)
-                {
-                    bool result = loginService.CambiarContrasena(Username, NuevaContrasena);
-                    MessageBox.Show(result ? "Contraseña actualizada correctamente." : "Usuario no encontrado. Por favor, verifica la información ingresada.");
-                    Login login = new Login();
-                    login.Show();
-                    this._windowLogin.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Las contraseñas no coinciden. Inténtalo nuevamente.");
-                }
+                MessageBox.Show("Completa todos los campos antes de continuar.");
+                return;
+            }
+
+            if (NuevaContrasena != ConfirmarContrasena)
+            {
+                MessageBox.Show("Las contraseñas no coinciden.");
+                return;
+            }
+
+            var usuario = loginService.ObtenerUsuarioPorUsername(Username);
+            if (usuario == null)
+            {
+                MessageBox.Show("Usuario no encontrado.");
+                return;
+            }
+
+            if (usuario.PreguntaSeguridad != PreguntaSeleccionada ||
+                !usuario.RespuestaSeguridad.Equals(RespuestaIngresada, StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("La pregunta o la respuesta de seguridad no coinciden.");
+                return;
+            }
+
+            bool result = loginService.CambiarContrasena(Username, NuevaContrasena);
+            if (result)
+            {
+                MessageBox.Show("Contraseña actualizada correctamente.");
+                new Login().Show();
+                ventanaActual.Close();
             }
             else
             {
-                MessageBox.Show("Por favor, introduce tu usuario y la nueva contraseña.");
+                MessageBox.Show("No se pudo cambiar la contraseña.");
             }
         }
+
 
 
         private void GoToLogin()
@@ -126,7 +189,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
 
             if (usuario != null)
             {
-                _windowLogin.Hide();
+                ventanaActual.Hide();
                 if (usuario.Administrador)
                 {
                     new Views.IndexAdmin().Show();

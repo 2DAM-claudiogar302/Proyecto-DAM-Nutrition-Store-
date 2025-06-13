@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using ProyectoNutritionStoreEF.Models;
 using ProyectoNutritionStoreEF.Service;
+using ProyectoNutritionStoreEF.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -14,12 +15,44 @@ namespace ProyectoNutritionStoreEF.ViewModels
     public class UsuarioViewModel : INotifyPropertyChanged
     {
         #region Variables
+        //Llamo al evento de accion en la vista para vaciar el campo de la contraseña:
+        public event Action SolicitarResetPassword;
         private UsuarioService _usuarioService;
         private bool imagenSubida = false;
         byte[] usuarioImg;
+        private readonly Window window;
+
+        public List<string> PreguntasSeguridad { get; } = new List<string>
+            {
+                "¿Ciudad de nacimiento?",
+                "¿Centro de estudios?"
+            };
         #endregion
 
         #region Propiedades
+
+        private string _preguntaSeguridad;
+        public string PreguntaSeguridad
+        {
+            get => _preguntaSeguridad;
+            set
+            {
+                _preguntaSeguridad = value;
+                OnPropertyChanged(nameof(PreguntaSeguridad));
+            }
+        }
+
+        private string _respuestaSeguridad;
+        public string RespuestaSeguridad
+        {
+            get => _respuestaSeguridad;
+            set
+            {
+                _respuestaSeguridad = value;
+                OnPropertyChanged(nameof(RespuestaSeguridad));
+            }
+        }
+
         private ObservableCollection<Usuario> _usuarios;
         public ObservableCollection<Usuario> Usuarios
         {
@@ -155,7 +188,11 @@ namespace ProyectoNutritionStoreEF.ViewModels
                     Usuername = _usuarioSeleccionado.Username;
                     Email = _usuarioSeleccionado.Email;
                     Contraseña = _usuarioSeleccionado.Contraseña;
+                    Contraseña = _usuarioSeleccionado.Contraseña;         
+                    PreguntaSeguridad = _usuarioSeleccionado.PreguntaSeguridad;
+                    RespuestaSeguridad = _usuarioSeleccionado.RespuestaSeguridad;
                     Foto = ConvertirByteAImagen(_usuarioSeleccionado.Foto);
+                    imagenSubida = _usuarioSeleccionado.Foto != null;
                     FechaRegistro = _usuarioSeleccionado.FechaRegistro;
 
                 }
@@ -176,6 +213,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
         #region Comandos
         public RelayCommand CargarUsuariosCommand { get; set; }
         public RelayCommand AgregarUsuarioCommand { get; set; }
+        public RelayCommand AgregarUsuarioCommand2 { get; set; }
         public RelayCommand EditarUsuarioCommand { get; set; }
         public RelayCommand EliminarUsuarioCommand { get; set; }
         public RelayCommand CancelCommand { get; }
@@ -183,11 +221,14 @@ namespace ProyectoNutritionStoreEF.ViewModels
         public RelayCommand obtenerDatosUser { get; }
         public RelayCommand FavoritosCommand { get; }
         public RelayCommand SearchCommand { get; }
+
+        public RelayCommand VolverCommand { get; }
         #endregion
 
         #region Constructor
-        public UsuarioViewModel(UsuarioService usuarioService)
+        public UsuarioViewModel(Window ventanaActual, UsuarioService usuarioService)
         {
+            window = ventanaActual;
             _usuarioService = usuarioService;
             Usuarios = new ObservableCollection<Usuario>(_usuarioService.GetAllUsuarios());
             obtenerDatosUser = new RelayCommand(
@@ -202,6 +243,9 @@ namespace ProyectoNutritionStoreEF.ViewModels
                 _ => LoadUsuarios(),
                 _ => true);
             AgregarUsuarioCommand = new RelayCommand(
+                _ => NewUser(),
+                _ => true);
+            AgregarUsuarioCommand2 = new RelayCommand(
                 _ => AddUsuario(),
                 _ => true);
             EditarUsuarioCommand = new RelayCommand(
@@ -221,17 +265,33 @@ namespace ProyectoNutritionStoreEF.ViewModels
                 _ => searchUsuario(),
                 _ => true
                 );
-
+            VolverCommand = new RelayCommand(
+                _ => EjecutarVolver(),
+                _ => true
+                );
             LoadUsuarios();
         }
         #endregion
 
         #region Métodos
+
+        private void EjecutarVolver()
+        {
+            new Inicio().Show();
+            this.window.Close();
+
+        }
+
+        public void InicializarUsuarios()
+        {
+            Usuarios = new ObservableCollection<Usuario>(_usuarioService.GetAllUsuarios());
+        }
         private bool comprobarCampos()
         {
             bool comprobar = false;
             if (!String.IsNullOrEmpty(Nombre) && !String.IsNullOrEmpty(Apellido1) && !String.IsNullOrEmpty(Apellido2)
-                && !String.IsNullOrEmpty(Usuername) && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(Contraseña) && imagenSubida)
+                && !String.IsNullOrEmpty(Usuername) && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(Contraseña)
+                && !string.IsNullOrEmpty(PreguntaSeguridad) && !string.IsNullOrEmpty(RespuestaSeguridad) && imagenSubida)
             {
                 comprobar = true;
             }
@@ -279,10 +339,30 @@ namespace ProyectoNutritionStoreEF.ViewModels
         {
             if (comprobarCampos())
             {
-                Usuario nuevoUsuario = new Usuario(Nombre, Apellido1, Apellido2, Usuername, Email, Contraseña, false, ConvertirImagenAByte(Foto), DateTime.Now);
+                Usuario nuevoUsuario = new Usuario(Nombre, Apellido1, Apellido2, Usuername, Email, Contraseña, false, ConvertirImagenAByte(Foto), PreguntaSeguridad, RespuestaSeguridad, DateTime.Now);
+                _usuarioService.AddUsuario(nuevoUsuario);
+                MessageBox.Show("Usuario registrado correctamente.");
+                LoadUsuarios();
+                LimpiarFormulario();
+            }
+            else
+            {
+                MessageBox.Show("Los campos no pueden estar vacios.");
+            }
+        }
+
+        private void NewUser()
+        {
+            if (comprobarCampos())
+            {
+                Usuario nuevoUsuario = new Usuario(Nombre, Apellido1, Apellido2, Usuername, Email, Contraseña, false, ConvertirImagenAByte(Foto), PreguntaSeguridad, RespuestaSeguridad, DateTime.Now);
                 _usuarioService.AddUsuario(nuevoUsuario);
                 LoadUsuarios();
                 LimpiarFormulario();
+                MessageBox.Show("Usuario registrado correctamente.");
+                Login windowLogin = new Login();
+                this.window.Close();
+                windowLogin.Show();
             }
             else
             {
@@ -303,9 +383,11 @@ namespace ProyectoNutritionStoreEF.ViewModels
                     UsuarioSeleccionado.Email = Email;
                     UsuarioSeleccionado.Username = Usuername;
                     UsuarioSeleccionado.Contraseña = Contraseña;
+                    UsuarioSeleccionado.PreguntaSeguridad = PreguntaSeguridad;
+                    UsuarioSeleccionado.RespuestaSeguridad = RespuestaSeguridad;
                     UsuarioSeleccionado.Foto = ConvertirImagenAByte(Foto);
-                    _usuarioService.UpdateUsuario(new Usuario(Nombre, Apellido1, Apellido2, Usuername, Email, Contraseña, false, ConvertirImagenAByte(Foto), DateTime.Now));
-                    MessageBox.Show("Se ha modificado el ejercicio.");
+                    _usuarioService.UpdateUsuario(UsuarioSeleccionado);
+                    MessageBox.Show("Se ha modificado el usuario.");
                     LoadUsuarios();
                     LimpiarFormulario();
                 }
@@ -385,7 +467,11 @@ namespace ProyectoNutritionStoreEF.ViewModels
             Usuername = null;
             Email = null;
             Contraseña = null;
+            PreguntaSeguridad = null;
+            RespuestaSeguridad = null;
+            SolicitarResetPassword?.Invoke();
             Foto = null;
+            UsuarioSeleccionado = null;
         }
         #endregion
 

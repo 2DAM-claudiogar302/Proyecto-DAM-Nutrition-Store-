@@ -1,5 +1,6 @@
 CREATE DATABASE nutritionstore;
 
+-- Tabla Usuarios
 CREATE TABLE Usuarios (
     ID INT PRIMARY KEY IDENTITY(1,1),
     Nombre VARCHAR(15),
@@ -7,18 +8,21 @@ CREATE TABLE Usuarios (
     Apellido2 VARCHAR(10),
     Username VARCHAR(10),
     Email VARCHAR(100) UNIQUE,
-    Contraseña VARCHAR(20),
-    FechaNacimiento DATE NOT NULL,
+    Contraseña VARCHAR(100),
     Administrador BIT NOT NULL,
-    FechaRegistro DATETIME DEFAULT GETDATE()
+    FechaRegistro DATETIME DEFAULT GETDATE(),
+    PreguntaSeguridad VARCHAR(255),
+    RespuestaSeguridad VARCHAR(255)
 );
 
+-- Tabla Categorías
 CREATE TABLE Categorias (
     ID INT PRIMARY KEY IDENTITY(1,1),
     Nombre VARCHAR(50),
     Descripcion VARCHAR(100)
 );
 
+-- Tabla Suplementos
 CREATE TABLE Suplementos (
     ID INT PRIMARY KEY IDENTITY(1,1),
     Nombre VARCHAR(20),
@@ -31,12 +35,14 @@ CREATE TABLE Suplementos (
     FOREIGN KEY (CategoriaID) REFERENCES Categorias(ID)
 );
 
+-- Tabla GruposMusculares
 CREATE TABLE GruposMusculares (
     ID INT PRIMARY KEY IDENTITY(1,1),
     Nombre VARCHAR(50),
     Descripcion VARCHAR(100)
 );
 
+-- Tabla Ejercicios
 CREATE TABLE Ejercicios (
     ID INT PRIMARY KEY IDENTITY(1,1),
     Nombre VARCHAR(20),
@@ -47,21 +53,23 @@ CREATE TABLE Ejercicios (
     FechaAñadido DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (GrupoMuscularID) REFERENCES GruposMusculares(ID)
 );
+
+-- Tabla de favoritos: suplementos
 CREATE TABLE Usuarios_SuplementosFavoritos (
     UsuarioID INT,
     SuplementoID INT,
     FechaAgregado DATETIME DEFAULT GETDATE(),
     PRIMARY KEY (UsuarioID, SuplementoID),
-    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(ID),
-    FOREIGN KEY (SuplementoID) REFERENCES Suplementos(ID)
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(ID) ON DELETE CASCADE,
+    FOREIGN KEY (SuplementoID) REFERENCES Suplementos(ID) ON DELETE CASCADE
 );
+
+-- Tabla de favoritos: ejercicios
 CREATE TABLE Usuarios_EjerciciosFavoritos (
     UsuarioID INT,
     EjercicioID INT,
     FechaAgregado DATETIME DEFAULT GETDATE(),
     PRIMARY KEY (UsuarioID, EjercicioID),
-    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(ID),
-    FOREIGN KEY (EjercicioID) REFERENCES Ejercicios(ID)
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(ID) ON DELETE CASCADE,
+    FOREIGN KEY (EjercicioID) REFERENCES Ejercicios(ID) ON DELETE CASCADE
 );
-
-

@@ -9,20 +9,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\01-Portada.png" />
-    <None Remove="Resources\aminoacidos.png" />
-    <None Remove="Resources\creatina.png" />
+    <None Remove="Resources\anadir.png" />
+    <None Remove="Resources\cancelar.png" />
+    <None Remove="Resources\confirmar.png" />
+    <None Remove="Resources\editar.png" />
     <None Remove="Resources\favorito.png" />
-    <None Remove="Resources\FondoLogin.jpg" />
+    <None Remove="Resources\gestionar.png" />
     <None Remove="Resources\GymIcon.png" />
+    <None Remove="Resources\iconoLogin.png" />
+    <None Remove="Resources\informacion.png" />
+    <None Remove="Resources\inicio.png" />
+    <None Remove="Resources\login.png" />
     <None Remove="Resources\LogOutIcon.png" />
     <None Remove="Resources\Logo_NutritionStore.png" />
     <None Remove="Resources\lupa.png" />
-    <None Remove="Resources\omega3.png" />
     <None Remove="Resources\papelera.png" />
-    <None Remove="Resources\proteina.png" />
+    <None Remove="Resources\suplemento.png" />
     <None Remove="Resources\userLogin.png" />
     <None Remove="Resources\UsuarioIcon.png" />
+    <None Remove="Resources\volver.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,22 +40,37 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\01-Portada.png">
+    <Resource Include="Resources\anadir.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\aminoacidos.png">
+    <Resource Include="Resources\cancelar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\creatina.png">
+    <Resource Include="Resources\confirmar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\editar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\favorito.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\FondoLogin.jpg">
+    <Resource Include="Resources\gestionar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\GymIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\iconoLogin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\informacion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\inicio.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\login.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\LogOutIcon.png">
@@ -62,19 +82,19 @@
     <Resource Include="Resources\lupa.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\omega3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\papelera.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\proteina.png">
+    <Resource Include="Resources\suplemento.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\userLogin.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\UsuarioIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\volver.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

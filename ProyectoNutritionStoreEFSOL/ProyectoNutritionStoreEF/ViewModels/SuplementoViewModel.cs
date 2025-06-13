@@ -24,8 +24,11 @@ namespace ProyectoNutritionStoreEF.ViewModels
     {
 
         #region Variables
+        //Llamo al evento de accion en la vista para vaciar el campo de la contraseña:
+        public event Action SolicitarResetPassword;
         private readonly SuplementoService suplementoService;
         private readonly LoginService loginService;
+        private string categoriaActual;
         private ObservableCollection<Models.Suplemento> suplementosTendencia {  get; set; }
         byte[] suplementoImg;
         private bool imagenSubida = false;
@@ -52,9 +55,21 @@ namespace ProyectoNutritionStoreEF.ViewModels
         public RelayCommand RemoveSuplemFavorito { get; }
 
         public RelayCommand SearchCommand { get; }
+        public RelayCommand SearchCommandCategoria { get; }
         #endregion
 
         #region Propiedades
+
+        private string _botonSeleccionado;
+        public string BotonSeleccionado
+        {
+            get => _botonSeleccionado;
+            set
+            {
+                _botonSeleccionado = value;
+                OnPropertyChanged(nameof(BotonSeleccionado));
+            }
+        }
 
         private ObservableCollection<Suplemento> _suplementosFavoritos;
         public ObservableCollection<Suplemento> SuplementosFavoritos
@@ -86,7 +101,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
             set
             {
                 _categoriaSeleccionada = value;
-                CategoriaId = _categoriaSeleccionada.ID;
+                CategoriaId = _categoriaSeleccionada != null ? _categoriaSeleccionada.ID : 0;
                 OnPropertyChanged(nameof(CategoriaSeleccionada));
             }
         }
@@ -260,6 +275,8 @@ namespace ProyectoNutritionStoreEF.ViewModels
                     CategoriaId = _suplementoSeleccionado.CategoriaID;
                     Precio = _suplementoSeleccionado.Precio;
                     Tendencia = _suplementoSeleccionado.Tendencia;
+                    Foto = ConvertirByteAImagen(_suplementoSeleccionado.Foto);
+                    imagenSubida = _suplementoSeleccionado.Foto != null;
                     FechaAnadido = _suplementoSeleccionado.FechaAnadido;
                     CategoriaSeleccionada = ListaCategorias.FirstOrDefault(c => c.ID == _suplementoSeleccionado.CategoriaID);
                 }
@@ -290,12 +307,13 @@ namespace ProyectoNutritionStoreEF.ViewModels
         #endregion
 
         #region Constructor
-        public SuplementoViewModel(Window ventana, SuplementoService spl)
+        public SuplementoViewModel(Window ventana, SuplementoService spl, string categoriaAct = null, string botonActivado = null)
         {
             ventanaActual = ventana;
 
             suplementoService = spl;
-
+            BotonSeleccionado = botonActivado;
+            categoriaActual = categoriaAct;
 
             SuplementosFavoritos = new ObservableCollection<Suplemento>(suplementoService.GetSuplementosFavoritos(obtenerUsuario()));
             SuplementosTendencia = new ObservableCollection<Models.Suplemento>();
@@ -361,6 +379,10 @@ namespace ProyectoNutritionStoreEF.ViewModels
                _ => searchSuplemento(),
                _ => true
                );
+            SearchCommandCategoria = new RelayCommand(
+               _ => searchSuplementoCategoria(),
+               _ => true
+               );
             CargarSuplementosFavoritos(obtenerUsuario());
 
             LoadData();
@@ -388,6 +410,23 @@ namespace ProyectoNutritionStoreEF.ViewModels
                 return ms.ToArray();
             }
         }
+        public BitmapImage ConvertirByteAImagen(byte[] imagenEnBytes)
+        {
+            if (imagenEnBytes == null || imagenEnBytes.Length == 0)
+                return null;
+
+            using (var stream = new MemoryStream(imagenEnBytes))
+            {
+                var imagen = new BitmapImage();
+                imagen.BeginInit();
+                imagen.CacheOption = BitmapCacheOption.OnLoad;
+                imagen.StreamSource = stream;
+                imagen.EndInit();
+                imagen.Freeze(); // mejora el rendimiento al hacerla inmutable
+                return imagen;
+            }
+        }
+
         private void LoadData()
         {
             var suplementos = suplementoService.GetAllSuplementos();
@@ -514,7 +553,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
                     SuplementoSeleccionado.CategoriaID = CategoriaId;
                     SuplementoSeleccionado.Foto = ConvertirImagenAByte(Foto);
                     suplementoService.UpdateSuplemento(SuplementoSeleccionado);
-                    MessageBox.Show("Se ha modificado el ejercicio.");
+                    MessageBox.Show("Se ha modificado el suplemento.");
                     LoadDataTend();
                     LimpiarFormulario();
                 }
@@ -550,6 +589,28 @@ namespace ProyectoNutritionStoreEF.ViewModels
             }
         }
 
+        private void searchSuplementoCategoria()
+        {
+            var listaFiltrada = suplementoService.obtenerSuplementosFiltro(Value);
+
+            switch (categoriaActual)
+            {
+                case "Proteínas":
+                    Proteinas = new ObservableCollection<Suplemento>(
+                        listaFiltrada.Where(s => s.categoria?.Nombre == "Proteínas"));
+                    MessageBox.Show($"Filtrados: {Proteinas.Count}");
+                    break;
+                case "Aminoácidos":
+                    Aminoacidos = new ObservableCollection<Suplemento>(
+                        listaFiltrada.Where(s => s.categoria?.Nombre == "Aminoácidos"));
+                    break;
+                case "Vitaminas":
+                    Vitaminas = new ObservableCollection<Suplemento>(
+                        listaFiltrada.Where(s => s.categoria?.Nombre == "Vitaminas"));
+                    break;
+            }
+        }
+
         private bool comprobarCampos()
         {
             bool comprobar = false;
@@ -576,12 +637,15 @@ namespace ProyectoNutritionStoreEF.ViewModels
             Descripcion = null;
             Precio = 0;
             Tendencia = false;
+            CategoriaSeleccionada = null;
+            SuplementoSeleccionado = null;
         }
 
         private void goToVistaProteinas()
         {
             Window ventanaAnterior = ventanaActual;
             ventanaActual = new Proteinas();
+            ventanaActual.DataContext = new SuplementoViewModel(ventanaActual, suplementoService, "Proteínas", "Proteínas");
             ventanaAnterior?.Close();
             ventanaActual.Show();
         }
@@ -589,6 +653,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
         {
             Window ventanaAnterior = ventanaActual;
             ventanaActual = new Vitaminas();
+            ventanaActual.DataContext = new SuplementoViewModel(ventanaActual, suplementoService, "Vitaminas", "Vitaminas");
             ventanaAnterior?.Close();
             ventanaActual.Show();
         }
@@ -596,6 +661,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
         {
             Window ventanaAnterior = ventanaActual;
             ventanaActual = new Aminoacidos();
+            ventanaActual.DataContext = new SuplementoViewModel(ventanaActual, suplementoService, "Aminoácidos", "Aminoácidos");
             ventanaAnterior?.Close();
             ventanaActual.Show();
         }
@@ -604,6 +670,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
         {
             Window ventanaAnterior = ventanaActual;
             ventanaActual = new Index();
+            ventanaActual.DataContext = new SuplementoViewModel(ventanaActual, suplementoService, "Inicio", "Inicio");
             ventanaAnterior?.Close();
             ventanaActual.Show();
         }
@@ -613,6 +680,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
             CargarSuplementosFavoritos(obtenerUsuario());
             Window ventanaAnterior = ventanaActual;
             ventanaActual = new SuplemetosFavoritos();
+            ventanaActual.DataContext = new SuplementoViewModel(ventanaActual, suplementoService, "Favoritos", "Favoritos");
             ventanaAnterior?.Close();
             ventanaActual.Show();
         }

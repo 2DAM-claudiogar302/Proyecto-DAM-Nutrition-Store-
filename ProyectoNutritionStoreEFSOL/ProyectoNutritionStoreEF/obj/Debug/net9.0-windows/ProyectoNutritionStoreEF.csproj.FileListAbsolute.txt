@@ -133,3 +133,5 @@ C:\Users\claud\OneDrive\Documentos\REPS_CLAUDIO\Proyecto-DAM-Nutrition-Store-\Pr
 C:\Users\claud\OneDrive\Documentos\REPS_CLAUDIO\Proyecto-DAM-Nutrition-Store-\ProyectoNutritionStoreEFSOL\ProyectoNutritionStoreEF\obj\Debug\net9.0-windows\Views\SuplemetosFavoritos.g.cs
 C:\Users\claud\OneDrive\Documentos\REPS_CLAUDIO\Proyecto-DAM-Nutrition-Store-\ProyectoNutritionStoreEFSOL\ProyectoNutritionStoreEF\obj\Debug\net9.0-windows\Views\EjerciciosFavoritos.baml
 C:\Users\claud\OneDrive\Documentos\REPS_CLAUDIO\Proyecto-DAM-Nutrition-Store-\ProyectoNutritionStoreEFSOL\ProyectoNutritionStoreEF\obj\Debug\net9.0-windows\Views\SuplemetosFavoritos.baml
+C:\Users\claud\OneDrive\Documentos\REPS_CLAUDIO\Proyecto-DAM-Nutrition-Store-\ProyectoNutritionStoreEFSOL\ProyectoNutritionStoreEF\obj\Debug\net9.0-windows\UserControls\HeaderCopia.g.cs
+C:\Users\claud\OneDrive\Documentos\REPS_CLAUDIO\Proyecto-DAM-Nutrition-Store-\ProyectoNutritionStoreEFSOL\ProyectoNutritionStoreEF\obj\Debug\net9.0-windows\UserControls\HeaderCopia.baml

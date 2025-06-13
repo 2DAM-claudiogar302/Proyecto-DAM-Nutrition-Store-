@@ -25,6 +25,8 @@ namespace ProyectoNutritionStoreEF.ViewModels
         byte[] ejercicioImg;
         private bool imagenSubida = false;
         private Window ventanaActual;
+        private string grupoActual;
+
         #endregion
 
         #region Comandos
@@ -38,6 +40,8 @@ namespace ProyectoNutritionStoreEF.ViewModels
         public RelayCommand CancelCommand { get; }
         public RelayCommand VistaEntrenamiento { get; }
         public RelayCommand VistaEntrenamientoAdmin { get; }
+        public RelayCommand VistaSuplementos { get; }
+        public RelayCommand VistaSuplementosAdmin { get; }
         public RelayCommand VistaGestionEntrenamiento { get; }
         public RelayCommand VistaEspalda { get; }
         public RelayCommand VistaPecho { get; }
@@ -49,10 +53,25 @@ namespace ProyectoNutritionStoreEF.ViewModels
         public RelayCommand RemoveEjercFavorito { get; }
 
         public RelayCommand SearchCommand { get; }
+        public RelayCommand SearchCommandGrupo { get; }
+
 
         #endregion
 
         #region Propiedades
+
+        //Botón seleccionado
+        private string _botonSeleccionado;
+        public string BotonSeleccionado
+        {
+            get => _botonSeleccionado;
+            set
+            {
+                _botonSeleccionado = value;
+                OnPropertyChanged(nameof(BotonSeleccionado));
+            }
+        }
+
 
         private ObservableCollection<Ejercicio> _ejerciciosFavoritos;
         public ObservableCollection<Ejercicio> EjerciciosFavoritos
@@ -97,11 +116,10 @@ namespace ProyectoNutritionStoreEF.ViewModels
                 if (_grupoSeleccionado != null)
                 {
                     GrupoMuscularId = _grupoSeleccionado.ID;
-                    Console.WriteLine($"GrupoMuscularId asignado: {GrupoMuscularId}");
                 }
                 else
                 {
-                    Console.WriteLine("GrupoSeleccionado es nulo.");
+                    GrupoMuscularId = 0;
                 }
                 OnPropertyChanged(nameof(GrupoSeleccionado));
             }
@@ -281,6 +299,8 @@ namespace ProyectoNutritionStoreEF.ViewModels
                     Descripcion = _ejercicioSeleccionado.Descripcion;
                     Tendencia = _ejercicioSeleccionado.Tendencia;
                     FechaAnadido = _ejercicioSeleccionado.FechaAnadido;
+                    Foto = ConvertirByteAImagen(_ejercicioSeleccionado.Foto);
+                    imagenSubida = _ejercicioSeleccionado.Foto != null;
                     //Para que se muestre el nombre en el comboBox
                     GrupoSeleccionado = ListaEjercicios.FirstOrDefault(g => g.ID == _ejercicioSeleccionado.GrupoMuscularID);
                     OnPropertyChanged(nameof(Id));
@@ -317,9 +337,11 @@ namespace ProyectoNutritionStoreEF.ViewModels
         #endregion
 
         #region Constructor
-        public EjercicioViewModel(Window ventana, EjercicioService ejer)
+        public EjercicioViewModel(Window ventana, EjercicioService ejer, string grupoAct = null, string botonActivado = null)
         {
+            grupoActual = grupoAct;
             ventanaActual = ventana;
+            BotonSeleccionado = botonActivado;
             context = new NutritionStoreContext();
             _loginService = new LoginService(context);
 
@@ -399,9 +421,20 @@ namespace ProyectoNutritionStoreEF.ViewModels
                 _ => goToFavoritos(),
                 _ => true
                 );
-
+            VistaSuplementos = new RelayCommand(
+                _ => goToSuplementos(),
+                _ => true
+                );
+            VistaSuplementosAdmin = new RelayCommand(
+                _ => goToSuplementosAdmin(),
+                _ => true
+                );
             SearchCommand = new RelayCommand(
                 _ => searchEjercicio(),
+                _ => true
+                );
+            SearchCommandGrupo = new RelayCommand(
+                _ => searchEjercicioGrupo(),
                 _ => true
                 );
 
@@ -416,7 +449,22 @@ namespace ProyectoNutritionStoreEF.ViewModels
         #endregion
 
         #region Cargar datos
+        public BitmapImage ConvertirByteAImagen(byte[] imagenEnBytes)
+        {
+            if (imagenEnBytes == null || imagenEnBytes.Length == 0)
+                return null;
 
+            using (var stream = new MemoryStream(imagenEnBytes))
+            {
+                var imagen = new BitmapImage();
+                imagen.BeginInit();
+                imagen.CacheOption = BitmapCacheOption.OnLoad;
+                imagen.StreamSource = stream;
+                imagen.EndInit();
+                imagen.Freeze();
+                return imagen;
+            }
+        }
         private void LoadData()
         {
             var ejercicios = ejercicioService.GetAllEjercicios();
@@ -486,6 +534,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
 
         #region Metodos
 
+
         private byte[] ConvertirImagenAByte(BitmapImage image)
         {
             if (image == null) return null;
@@ -534,6 +583,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
         {
             this.ventanaActual.Close();
             Entrenamiento vista = new Entrenamiento();
+            vista.DataContext = new EjercicioViewModel(vista, ejercicioService, "Inicio", "Inicio");
             vista.ShowDialog();
         }
 
@@ -564,6 +614,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
         {
             this.ventanaActual.Close();
             Espalda vista = new Views.Espalda();
+            vista.DataContext = new EjercicioViewModel(vista, ejercicioService, "Espalda", "Espalda");
             vista.ShowDialog();
         }
 
@@ -571,6 +622,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
         {
             this.ventanaActual.Close();
             Pecho vista = new Views.Pecho();
+            vista.DataContext = new EjercicioViewModel(vista, ejercicioService, "Pecho", "Pecho");
             vista.ShowDialog();
         }
 
@@ -578,6 +630,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
         {
             this.ventanaActual.Close();
             Pierna vista = new Views.Pierna();
+            vista.DataContext = new EjercicioViewModel(vista, ejercicioService, "Pierna", "Pierna");
             vista.ShowDialog();
         }
 
@@ -585,6 +638,7 @@ namespace ProyectoNutritionStoreEF.ViewModels
         {
             this.ventanaActual.Close();
             Brazo vista = new Views.Brazo();
+            vista.DataContext = new EjercicioViewModel(vista, ejercicioService, "Brazo", "Brazo");
             vista.ShowDialog();
         }
 
@@ -593,9 +647,26 @@ namespace ProyectoNutritionStoreEF.ViewModels
             CargarEjerciciosFavoritos(obtenerUsuario());
             Window ventanaAnterior = ventanaActual;
             ventanaActual = new EjerciciosFavoritos();
+            ventanaActual.DataContext = new EjercicioViewModel(ventanaActual, ejercicioService, "Favoritos", "Favoritos");
             ventanaAnterior?.Close();
             ventanaActual.Show();
             
+        }
+
+        private void goToSuplementos()
+        {
+            Window ventanaAnterior = ventanaActual;
+            ventanaActual = new Views.Index();
+            ventanaAnterior?.Close();
+            ventanaActual.Show();
+        }
+
+        private void goToSuplementosAdmin()
+        {
+            Window ventanaAnterior = ventanaActual;
+            ventanaActual = new Views.IndexAdmin();
+            ventanaAnterior?.Close();
+            ventanaActual.Show();
         }
 
         private void anadirEjercicio()
@@ -667,6 +738,34 @@ namespace ProyectoNutritionStoreEF.ViewModels
                 EjerciciosTotales = ejercicioService.GetAllEjercicios();
             }
         }
+
+        private void searchEjercicioGrupo()
+        {
+            var listaFiltrada = ejercicioService.obtenerEjerciciosFiltro(Value);
+
+            switch (grupoActual)
+            {
+                case "Pecho":
+                    Pecho = new ObservableCollection<Ejercicio>(
+                        listaFiltrada.Where(e => e.grupoMuscular?.Nombre == "Pecho"));
+                    MessageBox.Show($"Filtrados: {Pecho.Count}");
+                    break;
+                case "Espalda":
+                    Espalda = new ObservableCollection<Ejercicio>(
+                        listaFiltrada.Where(e => e.grupoMuscular?.Nombre == "Espalda"));
+                    break;
+                case "Brazo":
+                    Brazo = new ObservableCollection<Ejercicio>(
+                        listaFiltrada.Where(e => e.grupoMuscular?.Nombre == "Brazo"));
+                    break;
+                case "Pierna":
+                    Pierna = new ObservableCollection<Ejercicio>(
+                        listaFiltrada.Where(e => e.grupoMuscular?.Nombre == "Pierna"));
+                    break;
+            }
+        }
+
+
         private bool comprobarCampos()
         {
             bool comprobar = false;
@@ -689,6 +788,9 @@ namespace ProyectoNutritionStoreEF.ViewModels
             Nombre = null;
             Descripcion = null;
             Tendencia = false;
+            GrupoSeleccionado = null;
+            EjercicioSeleccionado = null;
+            
         }
 
         private void cargarImagen()

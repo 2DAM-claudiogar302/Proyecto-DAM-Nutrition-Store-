@@ -124,7 +124,7 @@ namespace ProyectoNutritionStoreEF.Service
         }
         public List<Ejercicio> obtenerEjerciciosFiltro(string value)
         {
-            return _context.Ejercicios.Where(e => e.Nombre.ToLower().Contains(value.ToLower())).ToList();
+            return _context.Ejercicios.Include(e => e.grupoMuscular).Where(e => e.Nombre.ToLower().Contains(value.ToLower())).ToList();
         }
         public List<GrupoMuscular> GetGrupoMuscular()
         {

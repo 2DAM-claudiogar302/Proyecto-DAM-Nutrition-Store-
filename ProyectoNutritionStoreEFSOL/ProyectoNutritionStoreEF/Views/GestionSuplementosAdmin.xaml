@@ -80,9 +80,10 @@
                 <Grid Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center">
                     <TextBox FontSize="13" Width="247" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Text="{Binding Precio}"></TextBox>
                 </Grid>
-                <Grid Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30">
-                    <CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Tendencia, Mode=TwoWay}"></CheckBox>
-                </Grid>
+                <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0">
+                    <TextBlock Text="¿Desea añadirlo a tendencia?" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <CheckBox IsChecked="{Binding Tendencia, Mode=TwoWay}" VerticalAlignment="Center"/>
+                </StackPanel>
 
                 <Grid Grid.Row="5" Grid.Column="1" HorizontalAlignment="center" VerticalAlignment="Center">
                     <ComboBox Width="150" Height="30" SelectedIndex="0" ItemsSource="{Binding ListaCategorias}" SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}" DisplayMemberPath="Nombre">
@@ -91,23 +92,23 @@
 
                 <Grid Grid.Row="6" Grid.Column="0">
                     <Button x:Name="agregar" Content="Añadir" 
-Style="{StaticResource bordesBoton}"
+Style="{StaticResource BotonConIconoPequeño}"
 Width="110" Margin="10" Height="35" 
-FontSize="13" HorizontalAlignment="Left" Command="{Binding AddSuplemento}"></Button>
+FontSize="13" HorizontalAlignment="Left" Command="{Binding AddSuplemento}" Tag="/Resources/anadir.png"></Button>
                     <Button x:Name="edit" Content="Editar" 
-Style="{StaticResource bordesBoton}"
-Width="110" Margin="10" Height="35" 
-FontSize="13" HorizontalAlignment="Right" Command="{Binding UpdateSuplemento}"></Button>
+Style="{StaticResource BotonConIconoPequeño}"
+Width="110" Margin="0,0,20,0" Height="35" 
+FontSize="13" HorizontalAlignment="Right" Command="{Binding UpdateSuplemento}" Tag="/Resources/editar.png"></Button>
                 </Grid>
                 <Grid Grid.Row="6" Grid.Column="1">
-                    <Button x:Name="eliminar" Content="Eliminar" 
-Style="{StaticResource bordesBoton}"
-Width="110" Margin="10" Height="35" 
+                    <Button x:Name="eliminar" Content="Eliminar" Margin="20,0,0,0" Tag="/Resources/papelera.png"
+Style="{StaticResource BotonConIconoPequeño}"
+Width="110" Height="35" 
 FontSize="13" HorizontalAlignment="Left" Command="{Binding DeleteSuplemento}"></Button>
 
                     <Button x:Name="cancelar" Content="Cancelar" 
-Style="{StaticResource bordesBoton}"
-Width="110" Margin="10" Height="35" 
+Style="{StaticResource BotonConIconoPequeño}"
+Width="110" Margin="10" Height="35"  Tag="/Resources/cancelar.png"
 FontSize="13" HorizontalAlignment="Right" Command="{Binding CancelCommand}"></Button>
                 </Grid>
 
@@ -138,11 +139,11 @@ Orientation="Vertical">
                         </Button>
 
                     </StackPanel>
-                    <DataGrid x:Name="listaSuplementos" AutoGenerateColumns="False" Margin="10,0,10,10"
-    HorizontalAlignment="Stretch"
-    VerticalAlignment="Stretch"
-    ColumnWidth="*" ItemsSource="{Binding SuplementosTotales}"
-SelectedItem="{Binding SuplementoSeleccionado}">
+                    <DataGrid x:Name="listaSuplementos" AutoGenerateColumns="False"
+Margin="10,0,10,10"
+Height="150" 
+ColumnWidth="*" ItemsSource="{Binding SuplementosTotales}"
+SelectedItem="{Binding SuplementoSeleccionado}" ScrollViewer.VerticalScrollBarVisibility="Auto">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding ID}"></DataGridTextColumn>
@@ -151,8 +152,6 @@ SelectedItem="{Binding SuplementoSeleccionado}">
                     </DataGrid>
                 </StackPanel>
             </Grid>
-          
-            
         </Grid>
 
     </Grid>

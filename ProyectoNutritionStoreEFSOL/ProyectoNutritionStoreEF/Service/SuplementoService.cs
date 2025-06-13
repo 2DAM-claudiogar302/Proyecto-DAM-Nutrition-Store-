@@ -125,7 +125,7 @@ namespace ProyectoNutritionStoreEF.Service
 
         public List<Suplemento> obtenerSuplementosFiltro(string value)
         {
-           return _context.Suplementos.Where(e => e.Nombre.ToLower().Contains(value.ToLower())).ToList();
+           return _context.Suplementos.Include(s => s.categoria).Where(e => e.Nombre.ToLower().Contains(value.ToLower())).ToList();
         }
 
         //Comprobar categorias

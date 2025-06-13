@@ -27,6 +27,14 @@ namespace ProyectoNutritionStoreEF.Views
             InitializeComponent();
             loginViewModel = new LoginViewModel(this, new EntityFramework.NutritionStoreContext());
             this.DataContext = loginViewModel;
+            //Funcion anónima que no recibe parámetros y llama al evento que limpia las contraseñas:
+            loginViewModel.SolicitarResetPassword += () =>
+            {
+                nuevaContraseña.Password = string.Empty;
+                confirmarContraseña.Password = string.Empty;
+            };
+
+
         }
 
         private void NuevaContrasena_Changed(object sender, RoutedEventArgs e)

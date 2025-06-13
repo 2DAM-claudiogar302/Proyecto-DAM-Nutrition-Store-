@@ -9,35 +9,44 @@
     <Grid>
         <Border Background="{StaticResource colorCabecera}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid>
-                <!-- Botón de barra -->
-                <Button HorizontalAlignment="Left" 
-                        VerticalAlignment="Center" 
-                        Width="40" Height="40" 
-                        Margin="20,0,0,0" 
-                        Style="{StaticResource bordesBoton}"
+                <!-- Botones del lateral izquierdo -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" >
+
+                    <!-- Botón de suplementos -->
+                    <Button Width="40" Height="40"
+                        Style="{StaticResource bordesBoton2}"
+                        Command="{Binding VistaSuplementos}"
+                        Background="#FEF2F2" BorderBrush="Transparent"
+                        Margin="0,0,10,0">
+                        <Image Source="/Resources/suplemento.png" Width="30" Height="30"/>
+                    </Button>
+
+                    <!-- Botón de barra -->
+                    <Button Width="40" Height="40" 
+                        Style="{StaticResource bordesBoton2}"
                         Command="{Binding VistaEntrenamiento}"
                         Background="#FEF2F2" 
                         BorderBrush="Transparent">
-                    <Image Source="/Resources/GymIcon.png" 
-                           Width="30" Height="30"/>
-                </Button>
+                        <Image Source="/Resources/GymIcon.png" Width="30" Height="30"/>
+                    </Button>
+
+                </StackPanel>
 
                 <!-- Logo principal -->
                 <Image Source="/Resources/Logo_NutritionStore.png" 
-                       HorizontalAlignment="Center" 
-                       VerticalAlignment="Center" 
-                       Width="100" Height="100"/>
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   Width="100" Height="100"/>
 
                 <!-- Botón de flecha -->
                 <Button HorizontalAlignment="Right" 
-                        VerticalAlignment="Center" 
-                        Width="40" Height="40" 
-                        Margin="0,0,20,0" 
-                        Style="{StaticResource bordesBoton}"
-                        Background="#FEF2F2" 
-                        BorderBrush="Transparent" Click="cerrarSesion">
-                    <Image Source="/Resources/LogOutIcon.png" 
-                           Width="30" Height="30"/>
+                    VerticalAlignment="Center" 
+                    Width="40" Height="40" 
+                    Margin="0,0,20,0" 
+                    Style="{StaticResource bordesBoton2}"
+                    Background="#FEF2F2" 
+                    BorderBrush="Transparent" Click="cerrarSesion">
+                    <Image Source="/Resources/LogOutIcon.png" Width="30" Height="30"/>
                 </Button>
             </Grid>
         </Border>

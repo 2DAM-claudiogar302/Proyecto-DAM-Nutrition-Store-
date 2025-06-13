@@ -23,10 +23,17 @@
 
     <!--#region Estilo de los bordes del botón-->
     <Style TargetType="Button" x:Key="bordesBoton">
+        <Setter Property="Width" Value="38"/>
+        <Setter Property="Height" Value="38"/>
+        <Setter Property="Background" Value="{StaticResource colorPrimario2}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}" BorderThickness="1" CornerRadius="24">
+                    <Border Background="{TemplateBinding Background}"
+                        CornerRadius="19"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -75,19 +82,238 @@
     </Style>
     
     <!-- Marcar botones del menú-->
-    <Style TargetType="Button" x:Key="MenuButtonStyle">
+    <Style x:Key="MenuButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="FontSize" Value="10"/>
-        <Setter Property="FontWeight" Value="Normal"/>
-        <Setter Property="Margin" Value="20,0"/>
-
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding VistaActual}">
-                <Setter Property="FontWeight" Value="Bold"/>
-            </DataTrigger>
+            <!-- Botón activo: Inicio -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.BotonSeleccionado, RelativeSource={RelativeSource AncestorType=Window}}" Value="Inicio" />
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Inicio" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="DarkGray" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </MultiDataTrigger>
+
+            <!-- Espalda -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.BotonSeleccionado, RelativeSource={RelativeSource AncestorType=Window}}" Value="Espalda" />
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Espalda" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="DarkGray" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </MultiDataTrigger>
+
+            <!-- Pecho -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.BotonSeleccionado, RelativeSource={RelativeSource AncestorType=Window}}" Value="Pecho" />
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Pecho" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="DarkGray" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </MultiDataTrigger>
+
+            <!-- Pierna -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.BotonSeleccionado, RelativeSource={RelativeSource AncestorType=Window}}" Value="Pierna" />
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Pierna" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="DarkGray" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </MultiDataTrigger>
+
+            <!-- Brazo -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.BotonSeleccionado, RelativeSource={RelativeSource AncestorType=Window}}" Value="Brazo" />
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Brazo" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="DarkGray" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </MultiDataTrigger>
+
+            <!-- Favoritos -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.BotonSeleccionado, RelativeSource={RelativeSource AncestorType=Window}}" Value="Favoritos" />
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Favoritos" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="DarkGray" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
+
+    <Style x:Key="MenuButtonStyle2" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <!-- Botón activo: Inicio -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.BotonSeleccionado, RelativeSource={RelativeSource AncestorType=Window}}" Value="Inicio" />
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Inicio" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="DarkGray" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </MultiDataTrigger>
+
+            <!-- Vitaminas -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.BotonSeleccionado, RelativeSource={RelativeSource AncestorType=Window}}" Value="Vitaminas" />
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Vitaminas" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="DarkGray" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </MultiDataTrigger>
+
+            <!-- Proteínas -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.BotonSeleccionado, RelativeSource={RelativeSource AncestorType=Window}}" Value="Proteínas" />
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Proteínas" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="DarkGray" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </MultiDataTrigger>
+
+            <!-- Aminoacidos -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.BotonSeleccionado, RelativeSource={RelativeSource AncestorType=Window}}" Value="Aminoácidos" />
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Aminoácidos" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="DarkGray" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </MultiDataTrigger>
+
+            <!-- Favoritos -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding DataContext.BotonSeleccionado, RelativeSource={RelativeSource AncestorType=Window}}" Value="Favoritos" />
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Favoritos" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="DarkGray" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+    
+    
+    <Style x:Key="EstiloBotonInicio" TargetType="Button">
+        <Setter Property="Background" Value="#007AFF"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                        CornerRadius="10"
+                        SnapsToDevicePixels="True">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BotonConIconoLogin" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource colorPrimario3}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                        CornerRadius="8"
+                        SnapsToDevicePixels="True">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,2">
+                            <Image Source="/Resources/iconoLogin.png"
+                               Width="18" Height="18" Margin="0,0,6,0"/>
+                            <ContentPresenter VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BotonConIconoPequeño" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource colorPrimario3}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Padding" Value="6,3"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="MinWidth" Value="90"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                        CornerRadius="6"
+                        SnapsToDevicePixels="True">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="{Binding Tag, RelativeSource={RelativeSource AncestorType=Button}}" 
+                               Width="16" Height="16" Margin="0,0,6,0"/>
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
 
 
 </ResourceDictionary>
